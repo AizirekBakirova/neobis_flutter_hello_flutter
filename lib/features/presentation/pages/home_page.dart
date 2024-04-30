@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:neobis_flutter_hello_flutter/components/todo_widget.dart';
 
@@ -24,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog();
+          return const AlertDialog();
         });
   }
 
@@ -38,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: addTask,
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           backgroundColor: Colors.purple[800],
         ),
         body: ListView.builder(
