@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:neobis_flutter_hello_flutter/components/add_task_wiget.dart';
 import 'package:neobis_flutter_hello_flutter/components/todo_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,8 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _controller = TextEditingController();
+
   List toDoList = [
-    ['Buy detergents', true],
+    ['Buy detergents', false],
     ['Make dinner', false]
   ];
 
@@ -22,11 +25,25 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+      Navigator.of(context).pop();
+    });
+  }
+
   void addTask() {
     showDialog(
         context: context,
         builder: (context) {
-          return const AlertDialog();
+          return AddTaskWidget(
+            controller: _controller,
+            onSave: saveNewTask,
+            onCancel: () {
+              Navigator.of(context).pop();
+            },
+          );
         });
   }
 
@@ -36,12 +53,12 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.purple[200],
         appBar: AppBar(
           title: const Center(child: Text('TO DO')),
-          backgroundColor: Colors.purple[800],
+          backgroundColor: Colors.purple[600],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: addTask,
           child: const Icon(Icons.add),
-          backgroundColor: Colors.purple[800],
+          backgroundColor: Colors.purple[600],
         ),
         body: ListView.builder(
             itemCount: toDoList.length,
