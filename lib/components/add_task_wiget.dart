@@ -14,9 +14,10 @@ class AddTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.purple[200],
-      content: Container(
+      backgroundColor: Colors.white,
+      content: SizedBox(
         height: 150,
+        width: 800,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

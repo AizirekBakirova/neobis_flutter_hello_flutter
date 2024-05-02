@@ -16,7 +16,9 @@ class _HomePageState extends State<HomePage> {
 
   List toDoList = [
     ['Buy detergents', false],
-    ['Make dinner', false]
+    ['Cook dinner', false],
+    ['Do exercises', false],
+    ['Read a book', false],
   ];
 
   void checkBoxChanged(bool? value, int index) {
@@ -56,15 +58,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.purple[200],
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: const Center(child: Text('TO DO')),
-          backgroundColor: Colors.purple[600],
+          title: const Center(
+              child: Text(
+            'TO DO',
+            style: TextStyle(color: Colors.black),
+          )),
+          backgroundColor: Colors.blue[200],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: addTask,
-          child: const Icon(Icons.add),
-          backgroundColor: Colors.purple[600],
+          child: const Icon(
+            Icons.add,
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.blue[200],
         ),
         body: ListView.builder(
             itemCount: toDoList.length,
@@ -74,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                 taskCompleted: toDoList[index][1],
                 onChanged: (value) => checkBoxChanged(value, index),
                 deleteFunction: (context) {
-                  deleteTask;
+                  deleteTask(index);
                 },
               );
             }));

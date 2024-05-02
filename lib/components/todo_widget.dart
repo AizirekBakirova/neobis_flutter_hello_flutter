@@ -19,20 +19,21 @@ class ToDoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 25, left: 25, top: 25),
+      padding: const EdgeInsets.only(right: 15, left: 15, top: 15),
       child: Slidable(
-        endActionPane: ActionPane(motion: StretchMotion(), children: [
+        endActionPane: ActionPane(motion: ScrollMotion(), children: [
           SlidableAction(
             onPressed: deleteFunction,
             icon: Icons.delete,
             backgroundColor: Colors.red,
             borderRadius: BorderRadius.circular(12),
+            label: 'Delete',
           )
         ]),
         child: Container(
           padding: EdgeInsets.all(25),
           decoration: BoxDecoration(
-            color: Colors.purple[600],
+            color: Colors.blue[200],
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
